@@ -1,0 +1,35 @@
+#canvas {
+    border:solid 2px;
+    border-color:brown;   
+}
+#JogarNovamente { 
+    display: none;
+    margin-left: 45%;
+
+    background-color: black;
+    color: white;
+}
+#JogarNovamente:hover {
+    background-color: white;
+    color: black;
+}
+#Logar { 
+    margin-left: 50%;
+    background-color: black;
+    color: white;
+}
+
+#Logar:hover { 
+    background-color: white;
+    color: black;
+}
+#NewUser {
+    display: none;
+    margin-left: 45%;
+    background-color: black;
+    color: white;
+}
+#NewUser:hover {
+    background-color: white;
+    color: black;
+}

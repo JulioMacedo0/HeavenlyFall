@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Jogo</title>
+
+    <script src='Objetos.js'></script>
+    <link rel="stylesheet" type="text/css" href="estilo.css" media="screen" />
+
+
+</head>
+
+<body>
+    <button onclick="animacao.JogarNovamente()" id="JogarNovamente">Jogar novamente</button>
+    <button onclick="usuario.UserName()" id="Logar">Login</button>
+    <canvas id="canvas" width="1600" height="300"> Atualize seu navegador </canvas>
+
+    <script>
+        //Recebendo o canvas com seu contexto
+        let canvas = document.getElementById('canvas'); let context = canvas.getContext('2d')
+        //Instanciando as classes para usar no jogo
+        let personagem = new Personagem(context); let animacao = new Animacao(context); let montanha = new Montanha(context); let chao = new Chao(context);
+        let nuvem = new Nuvem(context); let inimigo = new Inimigos(context)
+        let som = new Som(context); let usuario = new User(context); let chefe = new Chefão(context)
+        animacao.Lop()
+        //Função que anima o personagem
+        setInterval(personagem.AnimaPersonagem, 250)
+        //Função que anima o inimigo
+        setInterval(inimigo.animaInimigo, 150)
+        //Função que anima o tiro do Chefão
+        setInterval(chefe.animaTiro, 250)
+    </script>
+
+    <!-- Carregando sons do jogo -->
+    <audio src="som/musicas/test.mp3" id="audio" preload="auto"></audio>
+    <audio src="som/musicas/pulo.mp3" id="Pulo" preload="auto"></audio>
+    <audio src="som/musicas/GameOver.mp3" id="GameOver" preload="auto"></audio>
+    <audio src="som/musicas/MusicaFinal.mp3" id="MusicaFinal" preload="auto"></audio>
+    <audio src="som/musicas/pew.mp3" id="pew" preload="auto"></audio>
+    <audio src="som/musicas/chefSpawn.mp3" id="chefSpawn" preload="auto"></audio>
+    <audio src="som/musicas/chefdano1.mp3" id="chefdano1" preload="auto"></audio>
+    <audio src="som/musicas/chefdano2.mp3" id="chefdano2" preload="auto"></audio>
+    <audio src="som/musicas/chefdano3.mp3" id="chefdano3" preload="auto"></audio>
+    <audio src="som/musicas/chefdano4.mp3" id="chefdano4" preload="auto"></audio>
+    <audio src="som/musicas/chefMorte.mp3" id="chefMorte" preload="auto"></audio>
+    <audio src="som/musicas/chefTiro.mp3" id="chefeTiro" preload="auto"></audio>
+     <!-- Botao de login -->
+    <button onclick="usuario.UserName()" id="NewUser">Usar outro usuário</button>
+
+</body>
+
+</html>
