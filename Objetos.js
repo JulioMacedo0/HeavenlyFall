@@ -1,3 +1,4 @@
+
 document.addEventListener("keydown", function (evento) {
     //Função de pulo. Keycode = ESPACE
     if (evento.keyCode == 32 && animacao.jogando == true && animacao.GameOver == false) {
@@ -36,6 +37,7 @@ document.addEventListener("keydown", function (evento) {
 })
 function Animacao(context) {
     this.context = context
+    this.HistoryMode= true
     this.ligado = true
     this.Final = false
     this.jogando = false
@@ -50,7 +52,7 @@ function Animacao(context) {
     this.tamanhoY = 50
     this.localX = 750
     this.localY = 30
-    this.proxFase = 10 // dificuldade inicial
+    this.proxFase = 2 // dificuldade inicial
     this.cont = 0
     this.contt = 0
 } Animacao.prototype = {
@@ -59,12 +61,14 @@ function Animacao(context) {
         animacao.ChefeMorto() // Função que verifica se o chefe está morto
         chefe.mudaForma()  // Função que muda a forma do chefe para o modo berserk
         if(animacao.Final == true && montanha.IndiceMontanha == 4){ //Condição para corrigir os menus nas fases finais
+            console.log("If 1")
             animacao.tamanhoX = 720
             animacao.tamanhoY = 200
             animacao.localX = 600
             animacao.localY = 0
         }
-        if (personagem.pontos >= animacao.proxFase) { // Condição para mudar as fases
+        else if (personagem.pontos >= animacao.proxFase && animacao.HistoryMode == true) { // Condição para mudar as fases
+            console.log("If modo historia")
             if (montanha.IndiceMontanha < 4) {
                 inimigo.resetaInimigo()
                 animacao.mudaCenario()
@@ -72,6 +76,19 @@ function Animacao(context) {
                 animacao.proxFase += animacao.proxFase * 1.5    // dificuldade no decorrer das fases
                 animacao.menu = true           
             }
+        else if (personagem.pontos >= animacao.proxFase && animacao.HistoryMode == false){
+            console.log("if modo recorde")
+            if (montanha.IndiceMontanha < 4) {
+                animacao.mudaCenario()
+                animacao.proxFase += 10  
+           }
+           if (personagem.pontos >= animacao.proxFase && motanha.IndiceMontanha == 4) {
+            animacao.proxFase += 10
+            montanha.IndiceMontanha = 0
+            chao.IndiceChao = 0
+            nuvem.IndiceNuvem = 0
+            }   
+        }
         } if (this.jogando == false) { // Tela inical do jogo
             animacao.desenhaTelaInicial()
         } if (this.GameOver == false) {
@@ -600,6 +617,12 @@ function User() { //função referente ao modo record, ainda não implementado
     BackupUser: function () {
         console.log("Nome de usuario salvo!.")
         usuario.saveName = usuario.name
+    },
+    ModoRecorde: function () {
+        animacao.HistoryMode = false
+    },
+    ModoHistoria: function () {
+        animacao.HistoryMode = true
     }
 }
 function Chefão() {
@@ -627,7 +650,7 @@ function Chefão() {
 } Chefão.prototype = {
     desenhaChefe: function () {
         let img = new Image()
-        img.src = 'imagens/inimigos/chefe2.png'
+        img.src = 'imagens/inimigos/Chefe.png'
         img.onload = function () {
             context.drawImage(img, chefe.SpriteChefe, 0, 384, 530, chefe.x, chefe.y, 128, 128)
         }

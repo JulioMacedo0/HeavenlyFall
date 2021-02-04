@@ -30,6 +30,19 @@
     color: white;
 }
 #NewUser:hover {
-    background-color: white;
-    color: black;
+    background-color: green
+ 
+}
+.ModeGame {
+    background-color: black;
+    color: white;
+}
+.ModeGame:hover {
+    background-color: green;
+
+}
+.DivButton {
+   
+   display: inline-flex;
+      
 }

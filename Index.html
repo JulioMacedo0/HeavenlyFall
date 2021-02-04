@@ -16,15 +16,25 @@
 <body>
     <button onclick="animacao.JogarNovamente()" id="JogarNovamente">Jogar novamente</button>
     <button onclick="usuario.UserName()" id="Logar">Login</button>
-    <canvas id="canvas" width="1600" height="300"> Atualize seu navegador </canvas>
-
+    <canvas id="canvas"  height="300"> Atualize seu navegador </canvas>
+    
     <script>
+        
         //Recebendo o canvas com seu contexto
-        let canvas = document.getElementById('canvas'); let context = canvas.getContext('2d')
+ 
+        let canvas = document.getElementById('canvas')
+        let context = canvas.getContext('2d')
+        canvas.width = window.innerWidth - 20    
         //Instanciando as classes para usar no jogo
-        let personagem = new Personagem(context); let animacao = new Animacao(context); let montanha = new Montanha(context); let chao = new Chao(context);
-        let nuvem = new Nuvem(context); let inimigo = new Inimigos(context)
-        let som = new Som(context); let usuario = new User(context); let chefe = new Chefão(context)
+        let personagem = new Personagem(context)
+        let animacao = new Animacao(context)
+        let montanha = new Montanha(context)
+        let chao = new Chao(context);
+        let nuvem = new Nuvem(context)
+        let inimigo = new Inimigos(context)
+        let som = new Som(context) 
+        let usuario = new User(context)
+        let chefe = new Chefão(context)
         animacao.Lop()
         //Função que anima o personagem
         setInterval(personagem.AnimaPersonagem, 250)
@@ -49,6 +59,11 @@
     <audio src="som/musicas/chefTiro.mp3" id="chefeTiro" preload="auto"></audio>
      <!-- Botao de login -->
     <button onclick="usuario.UserName()" id="NewUser">Usar outro usuário</button>
+    <div class="DivButton">
+        <button onclick="usuario.ModoHistoria()" class="ModeGame">Modo Historia</button>
+        <button onclick="usuario.ModoRecorde()" class="ModeGame">Modo Recorde</button>
+    </div>
+    
 
 </body>
 
