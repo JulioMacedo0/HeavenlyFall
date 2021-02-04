@@ -1,7 +1,3 @@
-//Função que executa o escudo do personagem.
-document.addEventListener("keypress", function (evento) {
-
-})
 document.addEventListener("keydown", function (evento) {
     //Função de pulo. Keycode = ESPACE
     if (evento.keyCode == 32 && animacao.jogando == true && animacao.GameOver == false) {
