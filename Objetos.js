@@ -76,20 +76,21 @@ function Animacao(context) {
                 animacao.proxFase += animacao.proxFase * 1.5    // dificuldade no decorrer das fases
                 animacao.menu = true           
             }
-        else if (personagem.pontos >= animacao.proxFase && animacao.HistoryMode == false){
-            console.log("if modo recorde")
-            if (montanha.IndiceMontanha < 4) {
+    
+        }else if (personagem.pontos >= animacao.proxFase && animacao.HistoryMode == false){
+            if (montanha.IndiceMontanha < 3) {
+                console.log("Muda cenário")
                 animacao.mudaCenario()
-                animacao.proxFase += 10  
+                animacao.proxFase += 10
            }
-           if (personagem.pontos >= animacao.proxFase && motanha.IndiceMontanha == 4) {
+           if (personagem.pontos >= animacao.proxFase && montanha.IndiceMontanha == 3) {
+               console.log('reseta fase')
             animacao.proxFase += 10
             montanha.IndiceMontanha = 0
             chao.IndiceChao = 0
             nuvem.IndiceNuvem = 0
             }   
-        }
-        } if (this.jogando == false) { // Tela inical do jogo
+        }if (this.jogando == false) { // Tela inical do jogo
             animacao.desenhaTelaInicial()
         } if (this.GameOver == false) {
             montanha.desenhaMontanha()
@@ -98,7 +99,7 @@ function Animacao(context) {
             inimigo.desenhaInimigo()
             personagem.desenhaPoder()      
             animacao.QuantPontos()              
-        } if (montanha.IndiceMontanha == 4 && animacao.GameOver == false) { //Condição que deixa explicito para outras funções que o jogo está na fase final
+        } if (montanha.IndiceMontanha == 4 && animacao.GameOver == false && animacao.HistoryMode == true) { //Condição que deixa explicito para outras funções que o jogo está na fase final
             animacao.Final = true // deixa expicito para o resto do código que o usuario está na fase final 
             som.TrilhaPrincipalPause()
             animacao.mudaInimigo()
