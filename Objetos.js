@@ -1,4 +1,3 @@
-
 document.addEventListener("keydown", function (evento) {
     //Função de pulo. Keycode = ESPACE
     if (evento.keyCode == 32 && animacao.jogando == true && animacao.GameOver == false) {
@@ -35,6 +34,7 @@ document.addEventListener("keydown", function (evento) {
         }
     }
 })
+
 function Animacao(context) {
     this.context = context
     this.HistoryMode= true
@@ -81,11 +81,11 @@ function Animacao(context) {
             if (montanha.IndiceMontanha < 3) {
                 console.log("Muda cenário")
                 animacao.mudaCenario()
-                animacao.proxFase += 10
+                animacao.proxFase += 2
            }
            if (personagem.pontos >= animacao.proxFase && montanha.IndiceMontanha == 3) {
                console.log('reseta fase')
-            animacao.proxFase += 10
+            animacao.proxFase += 2
             montanha.IndiceMontanha = 0
             chao.IndiceChao = 0
             nuvem.IndiceNuvem = 0
@@ -176,6 +176,7 @@ function Animacao(context) {
         som.MusicaFinalPause()
         animacao.GameOver = true
         JogarNovamente.style.display = 'block'
+        
     },
     gameOverTela: function () {
         console.log('Você perdeu!')
