@@ -176,7 +176,7 @@ function Animacao(context) {
         som.MusicaFinalPause()
         animacao.GameOver = true
         JogarNovamente.style.display = 'block'
-        
+         SavePoints()    
     },
     gameOverTela: function () {
         console.log('Você perdeu!')
@@ -602,7 +602,7 @@ function Som() {
         chefTiro.play()
     }
 }
-function User() { //função referente ao modo record, ainda não implementado
+function User() { 
     this.context = context
     this.name
     this.saveName
@@ -625,8 +625,9 @@ function User() { //função referente ao modo record, ainda não implementado
     },
     ModoHistoria: function () {
         animacao.HistoryMode = true
-    }
+    },
 }
+
 function Chefão() {
     this.context = context
     this.ChefeVivo = true

@@ -2,6 +2,7 @@
 <html lang="pt-br">
 
 <head>
+    <link rel="shortcut icon" href="#" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -19,6 +20,7 @@
 
 
     <script>
+
  //Recebendo o canvas com seu contexto
  let canvas = document.getElementById('canvas')
    let context = canvas.getContext('2d')
@@ -36,12 +38,30 @@
 
    animacao.Lop()
    
+
+   async function SavePoints() {
+        let body = {
+          user: usuario.name,
+          points: personagem.pontos
+        }
+        console.log(body)
+       await fetch ('http://localhost:3000/user/save', {
+            method: 'POST',
+            body:  JSON.stringify(body),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+        }).then((res) => res.json())
+        .then((response) => console.log(response))
+    } 
+    
         //Função que anima o personagem
         setInterval(personagem.AnimaPersonagem, 250)
         //Função que anima o inimigo
         setInterval(inimigo.animaInimigo, 150)
         //Função que anima o tiro do Chefão
         setInterval(chefe.animaTiro, 250)
+
     </script>
 
     <!-- Carregando sons do jogo -->
@@ -63,7 +83,8 @@
         <button onclick="usuario.ModoHistoria()" class="ModeGame">Modo Historia</button>
         <button onclick="usuario.ModoRecorde()" class="ModeGame">Modo Recorde</button>
     </div>
-    
+  
+
 
 </body>
 
