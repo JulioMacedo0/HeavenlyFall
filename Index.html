@@ -6,8 +6,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Jogo</title>
- <script src='Objetos.js'></script>
+    <title>Heavenly Fall</title>
+ <script src='Events.js'></script>
+ <script src='Animacao.js'></script>
+ <script src='Personagem.js'></script>
+ <script src='Som.js'></script>
+ <script src='Cenário.js'></script>
+ <script src='Inimigos.js'></script>
+ <script src='User.js'></script>
 <link  rel="stylesheet" type="text/css" href="estilo.css" media="screen" />
 
 </head>
@@ -17,8 +23,6 @@
     <button onclick="usuario.UserName()" id="Logar">Login</button>
     <canvas id="canvas"  height="300"> Atualize seu navegador </canvas>
     
-
-
     <script>
 
  //Recebendo o canvas com seu contexto
@@ -36,25 +40,7 @@
     let usuario = new User(context)
    let chefe = new Chefão(context)
 
-   animacao.Lop()
-   
-
-   async function SavePoints() {
-        let body = {
-          user: usuario.name,
-          points: personagem.pontos
-        }
-        console.log(body)
-       await fetch ('http://localhost:3000/user/save', {
-            method: 'POST',
-            body:  JSON.stringify(body),
-            headers: {
-              'Content-Type': 'application/json'
-            }
-        }).then((res) => res.json())
-        .then((response) => console.log(response))
-    } 
-    
+   animacao.Lop() 
         //Função que anima o personagem
         setInterval(personagem.AnimaPersonagem, 250)
         //Função que anima o inimigo
@@ -80,8 +66,8 @@
      <!-- Botao de login -->
     <button onclick="usuario.UserName()" id="NewUser">Usar outro usuário</button>
     <div class="DivButton">
-        <button onclick="usuario.ModoHistoria()" class="ModeGame">Modo Historia</button>
-        <button onclick="usuario.ModoRecorde()" class="ModeGame">Modo Recorde</button>
+        <button onclick="usuario.ModoHistoria()" class="ModeGame" id="ModoHistoria">Modo Historia</button>
+        <button onclick="usuario.ModoRecorde()" class="ModeGame" id="ModoRecorde">Modo Recorde</button>
     </div>
   
 

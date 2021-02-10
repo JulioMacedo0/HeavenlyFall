@@ -5,13 +5,13 @@
 #JogarNovamente { 
     display: none;
     margin-left: 45%;
-
+    width: 150px;
     background-color: black;
     color: white;
 }
 #JogarNovamente:hover {
-    background-color: white;
-    color: black;
+    background-color: green;
+    color: white;
 }
 #Logar { 
     margin-left: 50%;
@@ -20,10 +20,11 @@
 }
 
 #Logar:hover { 
-    background-color: white;
-    color: black;
+    background-color: green;
+    color: white;
 }
 #NewUser {
+    width: 150px;
     display: none;
     margin-left: 45%;
     background-color: black;
@@ -36,13 +37,17 @@
 .ModeGame {
     background-color: black;
     color: white;
+    width: 150px;
 }
 .ModeGame:hover {
     background-color: green;
 
 }
 .DivButton {
-   
-   display: inline-flex;
+  left: 50%;
+  margin-left: -100px; 
+  position: absolute;
+  width: 350px; 
+  align-items: center;  
       
 }
