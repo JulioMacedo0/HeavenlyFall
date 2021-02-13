@@ -1,17 +1,17 @@
 async function SavePoints() {
     let body = {
-      user: usuario.name,
-      points: personagem.pontos
+        user: usuario.name,
+        points: personagem.pontos
     }
-   await fetch ('http://localhost:3000/user/save', {
+    await fetch('http://localhost:3000/user/save', {
         method: 'POST',
-        body:  JSON.stringify(body),
+        body: JSON.stringify(body),
         headers: {
-          'Content-Type': 'application/json'
+            'Content-Type': 'application/json'
         }
     }).then((res) => res.json())
-    .then((response) => console.log(response))
-} 
+        .then((response) => console.log(response))
+}
 
 function Animacao(context) {
     this.context = context
@@ -38,7 +38,7 @@ function Animacao(context) {
         animacao.ChefeFraco() // Função que verifica se o chefe está fraco 
         animacao.ChefeMorto() // Função que verifica se o chefe está morto
         chefe.mudaForma()  // Função que muda a forma do chefe para o modo berserk
-        if(animacao.Final == true && montanha.IndiceMontanha == 4){ //Condição para corrigir os menus nas fases finais
+        if (animacao.Final == true && montanha.IndiceMontanha == 4) { //Condição para corrigir os menus nas fases finais
             animacao.tamanhoX = 720
             animacao.tamanhoY = 200
             animacao.localX = 600
@@ -48,71 +48,71 @@ function Animacao(context) {
             if (montanha.IndiceMontanha < 4) {
                 inimigo.resetaInimigo()
                 animacao.mudaCenario()
-                animacao.IndiceMenu ++
+                animacao.IndiceMenu++
                 animacao.proxFase += 2   // dificuldade no decorrer das fases
-                animacao.menu = true           
+                animacao.menu = true
             }
-    
-        }else if (personagem.pontos >= animacao.proxFase && animacao.HistoryMode == false){
+
+        } else if (personagem.pontos >= animacao.proxFase && animacao.HistoryMode == false) {
             if (montanha.IndiceMontanha < 3) {
                 animacao.mudaCenario()
                 animacao.proxFase += 2
-           }
-           if (personagem.pontos >= animacao.proxFase && montanha.IndiceMontanha == 3) {
-            animacao.proxFase += 2
-            montanha.IndiceMontanha = 0
-            chao.IndiceChao = 0
-            nuvem.IndiceNuvem = 0
-            }   
-        }if (this.jogando == false) { // Tela inical do jogo
+            }
+            if (personagem.pontos >= animacao.proxFase && montanha.IndiceMontanha == 3) {
+                animacao.proxFase += 2
+                montanha.IndiceMontanha = 0
+                chao.IndiceChao = 0
+                nuvem.IndiceNuvem = 0
+            }
+        } if (this.jogando == false) { // Tela inical do jogo
             animacao.desenhaTelaInicial()
         } if (this.GameOver == false) {
             montanha.desenhaMontanha()
             chao.desenhaChao()
             nuvem.desenhaNuvem()
             inimigo.desenhaInimigo()
-            personagem.desenhaPoder()  
-            if(animacao.HistoryMode == false) { 
-            animacao.QuantPontos() 
-            }             
+            personagem.desenhaPoder()
+            if (animacao.HistoryMode == false) {
+                animacao.QuantPontos()
+            }
         } if (montanha.IndiceMontanha == 4 && animacao.GameOver == false && animacao.HistoryMode == true) { //Condição que deixa explicito para outras funções que o jogo está na fase final
             animacao.Final = true // deixa expicito para o resto do código que o usuario está na fase final 
             som.TrilhaPrincipalPause()
             animacao.mudaInimigo()
             som.MusicaFinal()
             if (chefe.ChefeVivo == true) { //condição que desenha o chefão enquanto ele estiver vivo
-                if(chefe.ChefeFraco == true && chefe.ChefeVivo == true){ // condição que faz o chefe atirar e jogar raios no jogador enquanto estiver fraco
-                chefe.andaTiro()
-                chefe.ativaRaio()
+                if (chefe.ChefeFraco == true && chefe.ChefeVivo == true) { // condição que faz o chefe atirar e jogar raios no jogador enquanto estiver fraco
+                    chefe.andaTiro()
+                    chefe.ativaRaio()
                 }
                 chefe.desenhaChefe()
                 chefe.desenhaVida()
                 chefe.desenhaTiro()
             }
-            if(chefe.ChefeVivo == false){ // tela de vitória que irá subir após a morte do chefão
-                animacao.telaWin()    
+            if (chefe.ChefeVivo == false) { // tela de vitória que irá subir após a morte do chefão
+                animacao.telaWin()
             }
         } if (this.ligado = true && this.jogando == true && this.GameOver == false) {
             montanha.animaMontanha()
-            if(animacao.HistoryMode == false){
-            animacao.QuantPontos()
+            if (animacao.HistoryMode == false) {
+                animacao.QuantPontos()
             }
             chao.animaChao()
             personagem.Gravidade()
             nuvem.animaNuvem()
-            personagem.andaTiro()      
+            personagem.andaTiro()
             personagem.desenhaPersonagem()
             inimigo.andaInimigo()
-            if (animacao.menu == true && animacao.HistoryMode == true){
-            animacao.desenhaMenu()
+            if (animacao.menu == true && animacao.HistoryMode == true) {
+                animacao.desenhaMenu()
             }
-            if(chefe.tempestade == true){
+            if (chefe.tempestade == true) {
                 chefe.caiRaio()
             }
-        }  
+        }
         else {
-            if(animacao.HistoryMode == false){
-            animacao.QuantPontos()
+            if (animacao.HistoryMode == false) {
+                animacao.QuantPontos()
             }
         }
     },
@@ -151,16 +151,16 @@ function Animacao(context) {
         chao.IndiceChao++
         nuvem.IndiceNuvem++
     },
-    gameOver: function () { 
+    gameOver: function () {
         som.GameOver()
         som.MusicaFinalPause()
         animacao.GameOver = true
         JogarNovamente.style.display = 'block'
         ModoHistoria.style.display = 'block'
-         ModoRecorde.style.display = 'block'
-         if(animacao.HistoryMode == false){
-         SavePoints()  
-         }  
+        ModoRecorde.style.display = 'block'
+        if (animacao.HistoryMode == false) {
+            SavePoints()
+        }
     },
     gameOverTela: function () {
         console.log('Você perdeu!')
@@ -213,15 +213,15 @@ function Animacao(context) {
         chefe.ChefeFraco = false
         animacao.GameOver = false
         animacao.Final = false
-        personagem.resetaTiro() 
+        personagem.resetaTiro()
         chefe.resetaTiro()
         inimigo.resetaInimigo()
         animacao.Jogar()
         animacao.Lop()
-        som.TrilhaPrincipal()  
+        som.TrilhaPrincipal()
         JogarNovamente.style.display = 'none'
         NewUser.style.display = 'none'
-        animacao.menu = true   
+        animacao.menu = true
     },
     desenhaTelaInicial: function () {
         let img = new Image()
@@ -241,11 +241,11 @@ function Animacao(context) {
         }
     },
     ChefeMorto: function () { // função verifica se o chefe está morto e o retira da tela
-        if (chefe.SpriteVida == 3512 && chefe.SpriteChefe == 792){
-            if(animacao.contt < 1){
-            animacao.contt++
-            som.chefMorte()
-            setTimeout(() => chefe.ChefeVivo = false, 400) 
+        if (chefe.SpriteVida == 3512 && chefe.SpriteChefe == 792) {
+            if (animacao.contt < 1) {
+                animacao.contt++
+                som.chefMorte()
+                setTimeout(() => chefe.ChefeVivo = false, 400)
             }
         }
     },
@@ -262,6 +262,6 @@ function Animacao(context) {
         img.onload = function () {
             context.drawImage(img, 0, 0, animacao.tamanhoMenu, animacao.alturaMenu, animacao.localX, animacao.localY, animacao.tamanhoX, animacao.tamanhoY)
         }
-        setTimeout( ()=> animacao.menu = false, 2450)
+        setTimeout(() => animacao.menu = false, 2450)
     }
 }

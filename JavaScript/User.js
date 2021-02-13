@@ -1,4 +1,4 @@
-function User() { 
+function User() {
     this.context = context
     this.name
     this.saveName

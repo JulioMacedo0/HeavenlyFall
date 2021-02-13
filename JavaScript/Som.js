@@ -1,7 +1,7 @@
 function Som() {
-    this.SomFinal = 0 
+    this.SomFinal = 0
     this.somCont = 0
-//Iniciando os sons do jogo
+    //Iniciando os sons do jogo
     window.onload = function () {
         TrilhaPrincipal = document.getElementById('audio')
         Pulo = document.getElementById('Pulo')
@@ -49,12 +49,12 @@ function Som() {
     MusicaFinal: function () {
         setTimeout(() => som.SomFinal++, 3000)
         if (som.SomFinal > 0) {
-            if(som.somCont < 1){
+            if (som.somCont < 1) {
                 som.somCont++
-            som.TrilhaPrincipalPause()
-            MusicaFinal.volume = 0.5
-            MusicaFinal.currentTime = 0
-            MusicaFinal.play()
+                som.TrilhaPrincipalPause()
+                MusicaFinal.volume = 0.5
+                MusicaFinal.currentTime = 0
+                MusicaFinal.play()
             }
         }
     },

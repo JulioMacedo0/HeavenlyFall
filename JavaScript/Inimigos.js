@@ -46,18 +46,18 @@ function Inimigos(context) {
         inimigo.obs.splice(0, tam)
     },
     insereInimigo: function () {
-    if (chefe.ChefeFraco == false) { // condição que faz os inimigos pararem de spawnar quando o chefe estiver no modo berserk
-              this.obs.push({
-                  x: 2000
-              })
-          }
+        if (chefe.ChefeFraco == false) { // condição que faz os inimigos pararem de spawnar quando o chefe estiver no modo berserk
+            this.obs.push({
+                x: 2000
+            })
+        }
         this.tempo = 35 + Math.floor(41 * Math.random())
     },
     desenhaInimigo: function () {
         for (let i = 0, tam = this.obs.length; i < tam; i++) {
             let obs = this.obs[i]
             let img = new Image()
-           img.src = inimigo.inimigo[inimigo.inimigoIndice]
+            img.src = inimigo.inimigo[inimigo.inimigoIndice]
             img.onload = function () {
                 context.drawImage(img, inimigo.Sprite, 0, inimigo.largura, inimigo.altura, obs.x, inimigo.y, inimigo.largura, inimigo.altura)
             }
@@ -103,15 +103,15 @@ function Chefão() {
     },
     ativaRaio: function () { // ativa o raio em tempo aleatorio
         chefe.tempo--
-        if(chefe.tempo <= 0){
+        if (chefe.tempo <= 0) {
             chefe.tempestade = true
-            chefe.tempo =  10 + Math.floor(Math.random() * 350) // 10 = tempo minimo para cair raio, 350 tempo maximo para cair o raio
-            chefe.raiox =  Math.floor(Math.random() * 1600)      
+            chefe.tempo = 10 + Math.floor(Math.random() * 350) // 10 = tempo minimo para cair raio, 350 tempo maximo para cair o raio
+            chefe.raiox = Math.floor(Math.random() * 1600)
         }
     },
     caiRaio: function () {
-        this.desenhaRaio()  
-        if(chefe.raiox >= 120 && chefe.raiox <= 170){ // condição se o raio cair no personagem
+        this.desenhaRaio()
+        if (chefe.raiox >= 120 && chefe.raiox <= 170) { // condição se o raio cair no personagem
             animacao.gameOver()
             animacao.gameOverTela()
         }
@@ -135,23 +135,23 @@ function Chefão() {
         }
     },
     andaTiro: function () {
-         if(chefe.timer == 0){
-             chefe.Atira()
-         }else {
+        if (chefe.timer == 0) {
+            chefe.Atira()
+        } else {
             chefe.timer--
         }
         for (let i = 0, tamanho = chefe.tiro.length; i < tamanho; i++) {
             let tiro = chefe.tiro[i]
             tiro.x -= 8
-            if(tiro.x  <= personagem.x + 10 && personagem.y <= tiro.y + 75 && personagem.x  <= tiro.x +60){
-            animacao.gameOver()
-            animacao.gameOverTela()
+            if (tiro.x <= personagem.x + 10 && personagem.y <= tiro.y + 75 && personagem.x <= tiro.x + 60) {
+                animacao.gameOver()
+                animacao.gameOverTela()
             }
             if (tiro.x <= 0) {
-               chefe.tiro.splice(i, 1)
+                chefe.tiro.splice(i, 1)
                 tamanho--
                 i--
-            } 
+            }
         }
     },
     Atira: function () {
@@ -167,9 +167,9 @@ function Chefão() {
         chefe.tiro.splice(0, tam)
     },
     animaTiro: function () {
-        if (chefe.SpritePoder < 688 ){
-        chefe.SpritePoder += 364
-        }else {
+        if (chefe.SpritePoder < 688) {
+            chefe.SpritePoder += 364
+        } else {
             chefe.SpritePoder = 0
         }
     },
