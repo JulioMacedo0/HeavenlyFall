@@ -27,7 +27,7 @@ O modo recorde é um loop na fase 1 com uma contagem de pontos. É preciso fazer
 
 ![image](https://github.com/Jusloso/HeavenlyFall/blob/main/src/assets/to_readme/record.png?raw=true)
 
-- Para a pagina de pontos funcionar é preciso estar com back-end do jogo em sua maquica com todos os serviços rodando.
+- Para a pagina de pontos funcionar é preciso estar com back-end do jogo em sua maquina com todos os serviços rodando.
 - acesse o repositório do back-end do jogo para aprender a como rodar o servidor !
 
 
