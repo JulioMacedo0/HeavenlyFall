@@ -189,7 +189,7 @@ function Animacao(context) {
         animacao.ligado = true
     },
     ResetaJogo() { // função que reseta as variaveis do jogo
-        animacao.proxFase = 10
+        animacao.proxFase = 2
         personagem.pontos = 0
         animacao.IndiceMenu = 0
         montanha.IndiceMontanha = 0
