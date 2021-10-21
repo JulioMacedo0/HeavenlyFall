@@ -221,6 +221,8 @@ function Animacao(context) {
         som.TrilhaPrincipal()
         JogarNovamente.style.display = 'none'
         NewUser.style.display = 'none'
+        ModoHistoria.style.display = 'none'
+        ModoRecorde.style.display = 'none'
         animacao.menu = true
     },
     desenhaTelaInicial: function () {
